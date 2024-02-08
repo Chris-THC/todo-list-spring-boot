@@ -12,27 +12,28 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    public List<UserDto> getAllUsers(){
+
+    public List<UserDto> getAllUsers() {
         final List<User> allUsers = userRepository.findAll();
         return allUsers.stream().map(UserDto::build).toList();
     }
 
-    public UserDto getUserById(final Integer idUser){
+    public UserDto getUserById(final Integer idUser) {
         User userById = userRepository.findById(idUser).orElse(null);
         return UserDto.build(userById);
     }
 
-    public UserDto createUser(final User userInfo){
+    public UserDto createUser(final User userInfo) {
         final User newUserCreate = new User(userInfo);
         userRepository.save(newUserCreate);
         return UserDto.build(newUserCreate);
     }
 
-    public void deleteUser(final Integer idUser){
+    public void deleteUser(final Integer idUser) {
         userRepository.deleteById(idUser);
     }
 
-    public UserDto updateAUser(final User userData, final int idUser){
+    public UserDto updateAUser(final User userData, final int idUser) {
         final User userToUpdate = userRepository.findById(idUser).orElse(null);
         userToUpdate.UpdateUser(userData);
         userRepository.save(userToUpdate);

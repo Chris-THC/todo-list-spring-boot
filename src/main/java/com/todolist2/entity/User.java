@@ -27,14 +27,18 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "role")
+    private String role;
+
     @OneToMany(mappedBy = "idUser", cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<>();
 
-    public User(final User user){
+    public User(final User user) {
         this.name = user.getName();
         this.password = user.getPassword();
         this.email = user.getEmail();
         this.tasks = user.getTasks();
+        this.role = user.getRole();
     }
 
     public User(Integer idUser) {
@@ -42,10 +46,11 @@ public class User {
     }
 
 
-    public void UpdateUser(final User user){
+    public void UpdateUser(final User user) {
         this.name = user.getName();
         this.password = user.getPassword();
         this.email = user.getEmail();
+        this.role = user.getRole();
     }
 
 }

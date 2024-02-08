@@ -1,4 +1,5 @@
 package com.todolist2.entity;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -36,7 +37,7 @@ public class Task {
     private User idUser;
 
 
-    public Task(final Task taskBody){
+    public Task(final Task taskBody) {
         this.title = taskBody.getTitle();
         this.description = taskBody.getDescription();
         this.isDone = taskBody.getIsDone();
@@ -44,7 +45,7 @@ public class Task {
         this.idUser = taskBody.getIdUser();
     }
 
-    public void UpdateTask(final Task taskBody){
+    public void UpdateTask(final Task taskBody) {
         this.title = taskBody.getTitle();
         this.description = taskBody.getDescription();
         this.isDone = taskBody.getIsDone();

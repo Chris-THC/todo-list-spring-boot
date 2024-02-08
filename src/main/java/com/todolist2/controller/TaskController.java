@@ -20,30 +20,30 @@ public class TaskController {
     private final TaskService taskService;
 
     @GetMapping("/")
-    public List<TaskDto> getAllTask(){
+    public List<TaskDto> getAllTask() {
         return taskService.getAllTasks();
     }
 
     @GetMapping("/{idTask}")
-    public ResponseEntity<TaskDto> getTaskById(@PathVariable("idTask") final int idTask){
+    public ResponseEntity<TaskDto> getTaskById(@PathVariable("idTask") final int idTask) {
         TaskDto taskById = taskService.getTaskById(idTask);
         return ResponseEntity.ok().body(taskById);
     }
 
     @PostMapping("/")
-    public ResponseEntity<TaskDto> saveTask(@RequestBody Task taskBody){
+    public ResponseEntity<TaskDto> saveTask(@RequestBody Task taskBody) {
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.createTask(taskBody));
     }
 
     @DeleteMapping("/{idTask}")
-    public ResponseEntity<TaskDto> deleteUserById(@PathVariable("idTask") final int idTask){
+    public ResponseEntity<TaskDto> deleteUserById(@PathVariable("idTask") final int idTask) {
         taskService.deleteTask(idTask);
         return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/{idTask}")
-    public ResponseEntity<TaskDto> updateUserById(@RequestBody  Task dataTask, @PathVariable("idTask") final int idTask){
-        taskService.updateTask(dataTask,idTask);
+    public ResponseEntity<TaskDto> updateUserById(@RequestBody Task dataTask, @PathVariable("idTask") final int idTask) {
+        taskService.updateTask(dataTask, idTask);
         return ResponseEntity.ok().build();
     }
 }

@@ -15,7 +15,8 @@ public class TaskDto {
     private Integer isDone;
     private Date date;
     private Integer idUser;
-    public static TaskDto build(final Task taskBody){
+
+    public static TaskDto build(final Task taskBody) {
         return TaskDto.builder()
                 .idTask(taskBody.getIdTask())
                 .title(taskBody.getTitle())

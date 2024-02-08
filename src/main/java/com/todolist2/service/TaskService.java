@@ -13,27 +13,27 @@ import java.util.List;
 public class TaskService {
     private final TaskRepository taskRepository;
 
-    public List<TaskDto> getAllTasks(){
+    public List<TaskDto> getAllTasks() {
         final List<Task> taskList = taskRepository.findAll();
         return taskList.stream().map(TaskDto::build).toList();
     }
 
-    public TaskDto getTaskById(final int idTask){
+    public TaskDto getTaskById(final int idTask) {
         Task taskById = taskRepository.findById(idTask).orElse(null);
         return TaskDto.build(taskById);
     }
 
-    public TaskDto createTask(final Task taskInfo){
+    public TaskDto createTask(final Task taskInfo) {
         final Task newTask = new Task(taskInfo);
         taskRepository.save(newTask);
         return TaskDto.build(newTask);
     }
 
-    public void deleteTask(final Integer idTask){
+    public void deleteTask(final Integer idTask) {
         taskRepository.deleteById(idTask);
     }
 
-    public TaskDto updateTask(final Task taskData, final int idTask){
+    public TaskDto updateTask(final Task taskData, final int idTask) {
         final Task taskToUpdate = taskRepository.findById(idTask).orElse(null);
         taskToUpdate.UpdateTask(taskData);
         taskRepository.save(taskToUpdate);
